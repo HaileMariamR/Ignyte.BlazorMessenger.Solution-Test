@@ -1,0 +1,279 @@
+:root {
+    /* Color Palette */
+    --color-primary: #4361ee;
+    --color-secondary: #3f37c9;
+    --color-success: #4cc9f0;
+    --color-background: #f8f9fa;
+    --color-surface: #ffffff;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6c757d;
+    --color-border: #dee2e6;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-message-own-bg: #eef2ff;
+    --color-code-bg: #2d2d2d;
+    --color-code-text: #f8f8f2;
+    --color-chip-close: var(--color-text-secondary);
+    --color-datetime-border: #ccc;
+    /* Typography */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-xs: 0.75rem;
+    --font-size-code: 0.875rem;
+    --font-size-chip: 0.6rem;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    /* Dimensions */
+    --chat-room-height: 600px;
+    --chat-room-width: 800px;
+    --message-width: 50%;
+    --input-height: 60px;
+    --avatar-size: 32px;
+    --demo-max-width: 1000px;
+    --datetime-width: 150px;
+    --datetime-height: 40px;
+    /* Borders & Radius */
+    --border-default: 1px solid var(--color-border);
+    --radius-sm: 3px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 50%;
+    /*  Shadows */
+    --shadow-default: 0 2px 10px var(--color-shadow);
+    /*  Padding */
+    --message-padding: var(--space-sm) var(--space-md);
+    --input-padding: var(--space-sm) var(--space-sm);
+    --chip-padding: 2px 10px;
+    --datetime-padding: 2px 4px;
+    --code-padding: var(--space-md);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+    padding: var(--space-md);
+}
+
+/*  Chat Room Container */
+.chat-room-container {
+    display: flex;
+    flex-direction: column;
+    height: var(--chat-room-height);
+    max-width: var(--chat-room-width);
+    margin: 0 auto;
+    background-color: var(--color-background);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-default);
+    overflow: hidden;
+}
+
+/*  Header */
+.chat-room-header {
+    padding: var(--space-md) var(--space-lg);
+    background-color: var(--color-surface);
+    border-bottom: var(--border-default);
+}
+.chat-room-header h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-primary);
+}
+
+.chat-room-header p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Messages Container */
+.chat-messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/*  Message Wrapper */
+.message-wrapper {
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+}
+
+.message-wrapper-own {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.message-wrapper-other {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/*  Chat Message */
+.chat-message {
+    width: var(--message-width);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xs);
+}
+
+.sender-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.avatar {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    background-color: var(--color-primary);
+    color: var(--avatar-text);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+}
+
+.sender-name {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+}
+
+.timestamp {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+.message-body {
+    background-color: var(--color-surface);
+    padding: var(--message-padding);
+    border-radius: var(--radius-lg);
+    border: var(--border-default);
+    color: var(--color-text-primary);
+}
+
+.message-body-own {
+    background-color: var(--color-message-own-bg);
+}
+
+/* Scheduled Message Chip */
+.scheduled-chip {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--color-background);
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--chip-padding);
+    font-size: var(--font-size-chip);
+    margin-bottom: var(--space-sm);
+}
+
+.small-datetime {
+    width: var(--datetime-width);
+    height: var(--datetime-height);
+    font-size: var(--font-size-xs);
+    padding: var(--datetime-padding);
+    border: 1px solid var(--color-datetime-border);
+    border-radius: var(--radius-sm);
+}
+
+.chip-close {
+    background: none;
+    border: none;
+    margin-left: var(--space-sm);
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--color-chip-close);
+}
+
+/* Input Container */
+.chat-input-container {
+    padding: var(--space-md);
+    border-top: var(--border-default);
+    background-color: var(--color-surface);
+}
+
+/*  Message Form */
+.message-form {
+    width: 100%;
+    height: 20%;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-sm);
+    justify-content: space-between;
+}
+
+.schedule-section {
+    display: flex;
+    flex: 1;
+    padding: var(--space-xs);
+}
+
+#scheduledTime {
+    padding: var(--space-sm);
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-code);
+}
+
+.input-section {
+    display: flex;
+    gap: var(--space-sm);
+    width: 80%;
+    height: var(--input-height);
+}
+
+ .input-section textarea {
+    flex: 1;
+    padding: var(--input-padding);
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+    resize: none;
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+ }
+
+.input-section button {
+    padding: var(--space-md);
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+    transition: background-color 0.2s;
+}
+
+.input-section button:hover {
+      background-color: var(--color-secondary);
+ }

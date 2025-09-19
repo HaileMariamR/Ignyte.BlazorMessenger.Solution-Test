@@ -1,0 +1,44 @@
+﻿@using Ignyte.BlazorMessenger.UI.Models
+@using Microsoft.AspNetCore.Components
+
+<div class="chat-message">
+    @if (message is not null)
+    {
+        <div class="message-header">
+            @if (message.IsScheduled)
+            {
+                <div class="scheduled-chip">
+                    Scheduled for @message.ScheduledFor?.ToString("dddd, MMMM d, yyyy")
+                    <button class="chip-close" @onclick="() => OnMessageDeletedCallback.InvokeAsync(message)">×</button>
+                </div>
+            }
+            else
+            {
+                <div class="sender-info">
+                    <div class="avatar">@message.DisplayName[0]</div>
+                    <span class="sender-name">@message.DisplayName</span>
+                </div>
+                <span class="timestamp">@message.DateTimeSent.ToString("hh:mm tt")</span>
+            }
+        </div>
+
+        <div class="message-body">
+            @if (message.IsScheduled)
+            {
+                <span>Scheduled Message</span>
+            }
+            else
+            {
+                @message.Text
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Message message { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<Message> OnMessageDeletedCallback { get; set; }
+}

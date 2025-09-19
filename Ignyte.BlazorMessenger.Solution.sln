@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ignyte.BlazorMessenger.Client", "Ignyte.BlazorMessenger.Client\Ignyte.BlazorMessenger.Client.csproj", "{5D338BF3-14EC-4F22-8A7A-282C9C635E73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ignyte.BlazorMessenger.UI", "Ignyte.BlazorMessenger.UI\Ignyte.BlazorMessenger.UI.csproj", "{E584F5AA-A8A8-4057-9FBE-BEEBB84E85BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D338BF3-14EC-4F22-8A7A-282C9C635E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D338BF3-14EC-4F22-8A7A-282C9C635E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D338BF3-14EC-4F22-8A7A-282C9C635E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D338BF3-14EC-4F22-8A7A-282C9C635E73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E584F5AA-A8A8-4057-9FBE-BEEBB84E85BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E584F5AA-A8A8-4057-9FBE-BEEBB84E85BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E584F5AA-A8A8-4057-9FBE-BEEBB84E85BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E584F5AA-A8A8-4057-9FBE-BEEBB84E85BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39A1F5D1-F621-41B6-8E0F-6E9003926ACF}
+	EndGlobalSection
+EndGlobal

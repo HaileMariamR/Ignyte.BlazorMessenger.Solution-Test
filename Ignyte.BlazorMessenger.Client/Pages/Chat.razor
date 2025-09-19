@@ -1,0 +1,106 @@
+﻿@page "/chat"
+@using Ignyte.BlazorMessenger.UI.Models;
+@using Ignyte.BlazorMessenger.UI.Components;
+@inject IJSRuntime JS
+
+<ChatRoomPanel ChatRoom="@room"
+               CurrentUser="@currentUser"
+               OnMessageSent="MessageSent"
+               OnMessageDeleted="MessageDeleted" />
+
+@code {
+    private ChatRoom room = new();
+    private User currentUser = new();
+  
+    protected override void OnInitialized()
+    {
+        // Only initialize if it's not already set up
+        if (string.IsNullOrEmpty(room.Id) || room.Messages.Count == 0)
+        {
+            InitializeChatRoom();
+        }
+    }
+
+    private void InitializeChatRoom()
+    {
+        // Create users
+        var user1 = new User("John Doe", "john@example.com", "john-profile.jpg")
+        {
+            Id = "user-1",
+            IsOnline = true
+        };
+
+        var user2 = new User("Jane Smith", "jane@example.com", "jane-profile.jpg")
+        {
+            Id = "user-2",
+            IsOnline = false
+        };
+
+        var user3 = new User("Bob Johnson", "bob@example.com", "bob-profile.jpg")
+        {
+            Id = "user-3",
+            IsOnline = true
+        };
+
+        // Set current user
+        currentUser = user1;
+
+        // Create and setup chatroom
+        room = new ChatRoom("General Discussion", user1.Id)
+        {
+            Id = Guid.NewGuid().ToString()
+        };
+
+        // Add members
+        room.MemberIds.Add(user2.Id);
+        room.MemberIds.Add(user3.Id);
+
+        // Update user chat rooms
+        user1.ChatRoomIds.Add(room.Id);
+        user2.ChatRoomIds.Add(room.Id);
+        user3.ChatRoomIds.Add(room.Id);
+
+        // Add initial messages
+        room.Messages.Add(new Message("Hello everyone!", user1.Id, user1.DisplayName, room.Id)
+        {
+            DateTimeSent = DateTime.UtcNow.AddMinutes(-30),
+            ProfilePicture = user1.ProfilePicture
+        });
+
+        room.Messages.Add(new Message("Hi John! How are you?", user2.Id, user2.DisplayName, room.Id)
+        {
+            DateTimeSent = DateTime.UtcNow.AddMinutes(-25),
+            ProfilePicture = user2.ProfilePicture
+        });
+
+        room.Messages.Add(new Message("I'm doing great! Working on a new project...", user1.Id, user1.DisplayName, room.Id)
+        {
+            DateTimeSent = DateTime.UtcNow.AddMinutes(-20),
+            ProfilePicture = user1.ProfilePicture
+        });
+
+        room.Messages.Add(new Message("That sounds interesting! Tell us more.", user3.Id, user3.DisplayName, room.Id)
+        {
+            DateTimeSent = DateTime.UtcNow.AddMinutes(-15),
+            ProfilePicture = user3.ProfilePicture
+        });
+
+        // Scheduled message
+        room.Messages.Add(new Message("Reminder: Meeting tomorrow at 10 AM", user1.Id, user1.DisplayName, room.Id, true)
+        {
+            ProfilePicture = user1.ProfilePicture
+        });
+    }
+
+    private async Task MessageSent(Message msg)
+    {
+        Console.WriteLine($"Message sent: {msg.Text}");
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task MessageDeleted(Message msg)
+    {
+        Console.WriteLine($"Message deleted: {msg.Id}");
+        await InvokeAsync(StateHasChanged);
+    }
+}
