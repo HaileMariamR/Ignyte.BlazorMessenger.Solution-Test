@@ -178,7 +178,7 @@ Reference the CSS in your Blazor WebAssembly or Server app:
 <link href="_content/Ignyte.BlazorMessenger.UI/css/chat.css" rel="stylesheet" />
 
 ```
-# Use Components in your .razor pages:
+Use Components in your .razor pages:
 ```
 <ChatRoomPanel 
     ChatRoom="@room" 
