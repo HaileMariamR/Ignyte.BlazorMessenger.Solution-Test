@@ -152,20 +152,21 @@ You can modify the UI by overriding CSS variables or applying your own styles.
 1. Override Variables Globally
 
 Add the overrides to your site.css or any global stylesheet:
-
+```
 :root {
   --chat-room-width: 100%;
   --chat-room-height: 700px;
   --avatar-size: 40px;
   --color-message-own-bg: #d1ffd6;
 }
-
+```
 2. Use Component-Specific Overrides
+```
 .chat-room-container {
   border-radius: 0; /* Remove rounded corners */
 }
 
-
+```
 # 🚀 Quick Start
 
 Add the Razor Class Library to your solution.
